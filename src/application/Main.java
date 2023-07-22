@@ -16,7 +16,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Size of the list: ");
         int n = sc.nextInt();
-        List<Employee> list = new ArrayList();
+        List<Employee> list = new ArrayList<>();
 
         for(int i = 0; i < n; ++i) {
             System.out.println("What is your employee ID? ");
@@ -32,9 +32,7 @@ public class Main {
         System.out.println(list.toString());
         System.out.println("Employee you want to increase salary: ");
         Integer empID = sc.nextInt();
-        List<Employee> increase = (List)list.stream().filter((x) -> {
-            return x.getId().equals(empID);
-        }).collect(Collectors.toList());
+        List<Employee> increase = list.stream().filter((x) -> x.getId().equals(empID)).toList();
         System.out.println("What is the percentage of the salary increase?");
         double percentage = sc.nextDouble();
         ((Employee)increase.get(0)).percentageIncrease(percentage);
